@@ -1,4 +1,3 @@
-
 X, A, D, N = map(int, input().split())
 
 B = A + D * (N-1)
@@ -12,15 +11,11 @@ else:
     end = B
 
 if (start <= X <= end):
-    # if A == X or B == X:
-    #     print(0)
-    #     exit()
-
     if D != 0:
         a = (X - start) % D
         b = D - (X - start) % D
         print(min(a, b))
-    else:
+    else: # D == 0 -> start == X == end
         print(0)
 
 else:
