@@ -16,6 +16,7 @@
 #include <bitset> // bitset
 #include <cctype> // isupper, islower, isdigit, toupper, tolower
 
+using namespace std;
 
 string delim = " ";
 
@@ -28,8 +29,6 @@ string delim = " ";
 
 #define ll long long
 #define lb long double
-
-using namespace std;
 
 
 void fastIO(){
