@@ -20,17 +20,21 @@
 
 using namespace std;
 
-string delim = " ";
-
-#define print(x) cout << x << "\n"
-#define print2(x, y) cout << x << delim << y << "\n"
-#define print3(x, y, z) cout << x << delim << y << delim << z << "\n"
-
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
 #define all(v) v.begin(), v.end()
 
 #define ll long long
 #define lb long double
+#define endl '\n'
+#define sp ' '
+#define pii pair<int, int>
+
+const int dx[4] = {-1, 0, 1, 0};
+const int dy[4] = {0, 1, 0, -1};
+
+#define print(x) cout << x << "\n"
+#define print2(x, y) cout << x << sp << y << "\n"
+#define print3(x, y, z) cout << x << sp << y << sp << z << "\n"
 
 void fastIO()
 {
@@ -43,20 +47,25 @@ int main()
 {
     fastIO();
 
-    double a, b, d;
+    string s;
 
-    cin >> a >> b >> d;
+    cin >> s;
 
-    double r, d0;
+    bool a = false, b = false;
 
-    r = hypot(a, b);
-    d0 = atan2(b, a); //각도 라디안으로 구해진다.
+    for (int i = 0; i < s.size(); i++)
+    {
+        if (!a && s.at(i) == 'C')
+            a = true;
+        if (a && s.at(i) == 'F')
+        {
+            b = true;
+            break;
+        }
+    }
 
-    d0 += d * acos(-1.0) / 180.0; // 각도 추가.
-
-    double x, y;
-    x = cos(d0) * r;
-    y = sin(d0) * r;
-
-    cout << fixed << setprecision(10) << x << endl << y << endl;
+    if (b)
+        print("Yes");
+    else
+        print("No");
 }

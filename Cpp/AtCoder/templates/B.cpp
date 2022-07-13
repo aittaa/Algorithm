@@ -15,20 +15,27 @@
 #include <unordered_set> // unordered_set
 #include <bitset> // bitset
 #include <cctype> // isupper, islower, isdigit, toupper, tolower
+#include <iomanip>       // setprecision
+#include <cmath>         // hypot
 
 using namespace std;
 
-string delim = " ";
-
-#define print(x) cout << x << "\n"
-#define print2(x, y) cout << x << delim << y << "\n"
-#define print3(x, y, z) cout << x << delim << y << delim << z << "\n"
 
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
 #define all(v) v.begin(), v.end()
 
 #define ll long long
 #define lb long double
+#define endl '\n'
+#define sp ' '
+#define pii pair<int, int>
+
+const int dx[4] = {-1, 0, 1, 0};
+const int dy[4] = {0, 1, 0, -1};
+
+#define print(x) cout << x << "\n"
+#define print2(x, y) cout << x << sp << y << "\n"
+#define print3(x, y, z) cout << x << sp << y << sp << z << "\n"
 
 
 void fastIO(){

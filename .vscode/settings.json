@@ -72,7 +72,8 @@
     "streambuf": "cpp",
     "typeinfo": "cpp",
     "unordered_set": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "iomanip": "cpp"
   },
   "C_Cpp.errorSquiggles": "Disabled"
 }
