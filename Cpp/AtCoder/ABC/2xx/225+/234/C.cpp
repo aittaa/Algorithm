@@ -28,5 +28,26 @@ int main()
 {
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(NULL);
-    
+    typedef long long ll;
+
+    ll value;
+    cin >> value;
+
+    string result(bitset<64>(value).to_string());
+
+    bool flag = false;
+
+    for (int i = 0; i < result.size(); i++)
+    {
+        if (!flag && result.at(i) == '1')
+            flag = true;
+
+        if (flag)
+        {
+            if (result.at(i) == '0')
+                cout << result.at(i);
+            else
+                cout << '2';
+        }
+    }
 }

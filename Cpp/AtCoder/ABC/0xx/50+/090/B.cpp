@@ -1,4 +1,3 @@
-
 #include <iostream>      // cout, endl, cin
 #include <string>        // string, to_string, stoi
 #include <vector>        // vector
@@ -28,5 +27,19 @@ int main()
 {
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(NULL);
-    
+
+    int A, B, cnt = 0;
+    cin >> A >> B;
+
+    for (int i = A; i <= B; i++)
+    {
+        string strNum(to_string(i));
+        string reversed(strNum);
+        reverse(all(reversed));
+
+        if (strNum == reversed)
+            ++cnt;
+    }
+
+    cout << cnt << endl;
 }

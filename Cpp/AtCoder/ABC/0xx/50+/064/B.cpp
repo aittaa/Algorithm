@@ -26,5 +26,16 @@ using namespace std;
 
 int main()
 {
-    
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(NULL);
+
+    int N;
+
+    cin >> N;
+    vector<int> arr(N);
+
+    rep(i, N) { cin >> arr.at(i); }
+    sort(all(arr));
+
+    cout << arr.back() - arr.front() << endl;
 }
