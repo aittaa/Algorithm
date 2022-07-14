@@ -48,27 +48,25 @@ void fastIO()
 
 int main()
 {
-    fastIO();
 
     int n;
     cin >> n;
 
-    vector<vector<int>> arr(n, vector<int>);
+    vector<pair<int, vector<int>>> arr(n);
+    set<vector<int>> ss;
 
     rep(i, n)
     {
-        cin >> arr.at(i);
-        rep(i, arr.at(i))
+        cin >> arr.at(i).first;
+        rep(j, arr.at(i).first)
         {
             int value;
             cin >> value;
-            arr.at(i).push_back(value);
+            arr.at(i).second.push_back(value);
         }
+        ss.insert(arr.at(i).second);
     }
 
-    rep(i, n)
-    {
-        for (auto v : arr.at(i))
-            cout << v << sp;
-    }
+    cout << ss.size() << endl;
+
 }
