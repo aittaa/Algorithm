@@ -48,7 +48,7 @@ void fastIO()
 
 int main()
 {
-
+    fastIO();
     int n;
     cin >> n;
 
@@ -68,5 +68,4 @@ int main()
     }
 
     cout << ss.size() << endl;
-
 }
