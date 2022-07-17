@@ -1,7 +1,7 @@
 #include <iostream>      // cout, endl, cin
 #include <string>        // string, to_string, stoi
 #include <vector>        // vector
-#include <algorithm>     // min, max, swap, sort, reverse, lower_bound, upper_bound
+#include <algorithm>     // min, max, swap, sort, reverse, lower_bound, upper_bound, next_permutation, ...
 #include <utility>       // pair, make_pair
 #include <tuple>         // tuple, make_tuple
 #include <cstdint>       // int64_t, int*_t
@@ -21,6 +21,7 @@
 using namespace std;
 
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
+#define rep_(i, j, n) for (int i = j; i < (int)(n); i++)
 #define all(v) v.begin(), v.end()
 
 #define ll long long
@@ -64,9 +65,9 @@ using namespace std;
 #define print(x) cout << x << "\n"
 #define print2(x, y) cout << x << sp << y << "\n"
 #define print3(x, y, z) cout << x << sp << y << sp << z << "\n"
-#define printv(x, end) \
-    for (auto v : x)   \
-    cout << v << end
+#define printv(container, end)    \
+    for (auto e : container) \
+    cout << e << end
 
 template <class T>
 bool chmax(T &a, const T &b)
@@ -89,8 +90,8 @@ bool chmin(T &a, const T &b)
     return 0;
 }
 
-const int dx[4] = {0, 1, 0, -1};
-const int dy[4] = {-1, 0, 1, 0};
+const int dx[4] = {-1, 0, 1, 0};
+const int dy[4] = {0, 1, 0, -1};
 
 const int dx2[8] = {0, 1, -1, 0, -1, 1, -1, 1};
 const int dy2[8] = {1, 0, 0, -1, -1, 1, 1, -1};
@@ -100,36 +101,12 @@ void fastIO()
     cin.tie(nullptr)->sync_with_stdio(false);
 }
 
+
+
 ///////////////////////////////////////////////////
 
 int main()
 {
     fastIO();
-    int h, w;
-
-    cin >> h >> w;
-    vector<string> arr(h);
-
-    rep(i, h) cin >> arr.at(i);
-
-    rep(j, h)
-    {
-        rep(i, w)
-        {
-            if (arr[j][i] == '.')
-            {
-                int cnt = 0;
-                rep(k, 8)
-                {
-                    int x = i + dx2[k];
-                    int y = j + dy2[k];
-
-                    if (0 <= x && x < w && 0 <= y && y < h && arr[y][x] == '#')
-                        ++cnt;
-                }
-                arr.at(j).at(i) = cnt + '0';
-            }
-        }
-    }
-    printv(arr, endl);
+    
 }
