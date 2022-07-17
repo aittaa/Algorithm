@@ -105,8 +105,56 @@ void fastIO()
 
 ///////////////////////////////////////////////////
 
+struct OptimizedDisjointSet{
+    vector<int> parent, rank;
+    OptimizedDisjointSet(int n) : parent(n), rank(n, 1){
+        for (int i = 0; i < n; ++i)
+            parent[i] = i;
+    }
+    
+    // u가 속한 트리의 루트의 번호를 반환한다.
+    int find(int u) {
+        if (u == parent[u]) return u;
+        return parent[u] = find(parent[u]);
+    }
+
+
+    // u가 속한 트리와 v가 속한 트리를 합친다.
+    void merge(int u, int v) {
+        u = find(u); v = find(v);
+        
+        if (u == v) return; // u와 v가 이미 같은 트리에 속하는 경우를 걸러낸다.
+        
+        if(rank[u] < rank[v]) swap(u, v);
+        // 이제 rank[u]가 항상 rank[v] 이상이므로 v를 u의 자식으로 넣는다.
+        parent[v] = u; // merge
+        
+        if(rank[u] == rank[v]) ++rank[u]; // 두 트리의 높이가 같은 경우 트리의 높이가 증가되어야 함.
+    }
+};
+
+
 int main()
 {
     fastIO();
     
+    int N, M;
+    cin >> N >> M;
+    OptimizedDisjointSet uf(N);
+
+    rep(i, M){
+        int a, b;
+        cin >> a >> b;
+        uf.merge(a-1, b-1);
+    }
+
+    unordered_set<int> resultSet;
+
+    rep(i, N){
+        resultSet.insert(uf.find(i));
+        
+    }
+    cout << resultSet.size() - 1 << endl;
+
 }
+
