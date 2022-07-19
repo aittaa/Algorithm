@@ -73,7 +73,13 @@
     "typeinfo": "cpp",
     "unordered_set": "cpp",
     "variant": "cpp",
-    "iomanip": "cpp"
+    "iomanip": "cpp",
+    "filesystem": "cpp",
+    "forward_list": "cpp",
+    "list": "cpp",
+    "regex": "cpp",
+    "valarray": "cpp",
+    "random": "cpp"
   },
   "C_Cpp.errorSquiggles": "Disabled"
 }
