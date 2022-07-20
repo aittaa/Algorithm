@@ -71,7 +71,7 @@ bool chmin(T &a, const T &b)
         a = b;
         return 1;
     }
-    return 0;3
+    return 0;
 }
 
 const int dx[4] = {-1, 0, 1, 0};
@@ -89,61 +89,89 @@ void fastIO()
 
 ///////////////////////////////////////////////////
 
-ull solve(string& str, map<pair<int, ui>>& mem){
-
-    int total = 0;
-    rep(i, str.size()){
-
-        int holder = 3 - (str.at(i) - 'A');
-        int cnt = 0;
-        for(size_t prev = 1; prev < (1<<4); ++prev){
-            cnt += mem[{holder, prev}];
-        }
-    }
-
-}
-
-void memorize(map<pair<int, ui>, int>& mem){
-
-    // D, C, B, A
-    rep(i, 4){
-        for(size_t prev = 1; prev < (1 << 4); ++prev){
-            
-            int cnt = 0;
-            for(size_t j = 1; j < (1 << 4); ++j){
-                if(!(j & (1 << i))) continue;
-                if( (j & prev) == 0 ) continue;
-                ++cnt;
-            }
-            mem[{i, prev}, cnt];
-        }
-    }
-}
-
-
-
-int main()
-{
+int main(){
     fastIO();
+    //파일 입력
+    // setbuf(stdout, NULL);
+    // freopen("input.txt", "r", stdin);
+
     
-    int tc;
-    cin >> tc;
+    rep(tc, 10){
+        int n;
+        cin >> n;
 
-    ull cnt;
-    map<pair<char, ui>, int> mem;
+        list<int> li(n);
 
-    memorize(mem);
+        auto iter = li.begin();
 
-    rep(i, tc){
-        cnt = 0;
-        string str;
-        cin >> str;
+        rep(i, n){
+            int input;
+            cin>>input;
+            *iter = input;
+            ++iter;
+        }
 
-        cnt += solve(str, mem);    
+        int m;
+        cin >> m;
 
-        print2("#"+to_string(i+1), cnt);
+        rep(i, m){
+            char input;
+            cin >> input;
+
+            int idx, cnt;
+            vector<int> temp;
+            list<int>::iterator itr;
+
+            switch(input){
+                case 'I':
+                    cin >> idx >> cnt;
+                    temp = vector<int>(cnt);
+                    rep(j, cnt) cin >> temp.at(j);
+                    
+                    itr = li.begin();
+                    rep(j, idx) ++itr;
+
+                    li.insert(itr, all(temp));
+                break;
+
+                case 'D':
+                    cin >> idx >> cnt;
+
+                    itr = li.begin();
+
+                    rep(j, idx) ++itr; 
+                    
+                    rep(j, cnt) li.erase(itr++);
+                    
+                
+                break;
+                case 'A':
+                    cin >> cnt;
+                    temp = vector<int>(cnt);
+                    rep(j, cnt) cin >> temp.at(j);
+
+                    li.insert(li.end(), all(temp));
+                
+                break;
+            }
+        }
+
+
+        print("#" + to_string(tc+1) + " ");
+
+        int i = 0;
+        for(auto& e : li){
+            if(!(i < 10)) break;
+
+            cout << e << sp;
+
+            ++i;
+        }
+
+        cout << endl;
+
     }
-    
+
 
     return 0;
 }
