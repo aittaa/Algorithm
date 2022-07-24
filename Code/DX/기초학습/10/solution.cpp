@@ -91,56 +91,48 @@ void fastIO()
 
 int main()
 {
-    fastIO();
     
-    string s, t;
-    cin >> s >> t;
+    rep(tc, 10){
 
-    vector<pair<char, int>> ss;
-    vector<pair<char, int>> tt;
+        int n;
+        cin >> n;
+        cin.ignore();
 
-    char prev = 'A';
-    for(auto c : s){
-        if(prev != c) ss.push_back({c, 1});
-        else ss.back().second++;
+        vector<bool> tree(n+1);
 
-        prev = c;
-    }
+        bool flag = true;
 
-    prev = 'A';
-    for(auto c : t){
-        if(prev != c) tt.push_back({c, 1});
-        else tt.back().second++;
+        rep_(i, 1, n+1){
+            string input;
+            getline(cin, input);
 
-        prev = c;
-    }
+            stringstream ss(input);
 
-    bool flag = true;
-    if(ss.size() != tt.size()){
-        flag = false;
-    }else{
-    
-        rep(i, ss.size()){
-            if(ss.at(i).first != tt.at(i).first){
-                flag = false;
-                break;
-            }
-            if(ss.at(i).second == 1 && ss.at(i).second < tt.at(i).second){
-                flag = false;
-                break;
-            }
+            ss >> input;
+            ss >> input;
+            tree.at(i) = isdigit(input.at(0));           
             
-            if(ss.at(i).second > tt.at(i).second){
-                flag = false;
+        }
+
+        int border = tree.size()/2;
+        
+        rep_(j, 1, border)
+            if(tree.at(j) == 1) { 
+                flag = false; 
                 break;
             }
+        
+        rep_(j, border, tree.size())
+            if(tree.at(j) == 0) { 
+                flag = false; 
+                break;
+                }
+            
+        cout << "#"+to_string(tc+1) << sp;
 
-        }
+        if(flag) cout << 1 << endl;
+        else cout << 0 << endl;
     }
-
-
-    YesNo(flag);
-
 
     return 0;
 }

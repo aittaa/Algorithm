@@ -93,7 +93,55 @@ int main()
 {
     fastIO();
     
-    rep(i, 5) cout << 1 << endl;
+    int tc;
+    cin >> tc;
+
+    rep(t, tc){
+        int n, m, l;
+        cin >> n >> m >> l;
+        list<int> array(n);
+        
+        for(auto& e : array)
+            cin >> e;
+        
+
+
+        int idx, value;
+
+        auto iter = array.begin();
+
+        rep(j, m){
+            char op;
+            cin >> op;
+            iter = array.begin();
+            switch(op){
+                case 'I':
+                    cin >> idx >> value;
+                    rep(i, idx) ++iter;
+                    array.insert(iter, value);
+                break;
+                case 'D':
+                    cin >> idx;
+                    rep(i, idx) ++iter;
+                    array.erase(iter);
+                break;
+                case 'C':
+                    cin >> idx >> value;
+                    rep(i, idx) ++iter;
+                    *iter = value;
+                break;
+            }
+        }
+        iter = array.begin();
+
+        if(array.size() < l) {
+            print2("#"+to_string(t+1), -1);
+        } else {
+            rep(i, l) ++iter;
+            print2("#"+to_string(t+1), *iter);
+        }
+    
+    }
     
     return 0;
 }

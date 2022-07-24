@@ -89,58 +89,45 @@ void fastIO()
 
 ///////////////////////////////////////////////////
 
+
+void inorder(vector<char> *tree, int key){
+    if(tree->size() <= key) return;
+
+    inorder(tree, key * 2);
+    cout << tree->at(key);
+    inorder(tree, key*2 + 1);
+
+}
+
 int main()
 {
-    fastIO();
-    
-    string s, t;
-    cin >> s >> t;
+    // fastIO();
 
-    vector<pair<char, int>> ss;
-    vector<pair<char, int>> tt;
+    rep(tc, 10){
 
-    char prev = 'A';
-    for(auto c : s){
-        if(prev != c) ss.push_back({c, 1});
-        else ss.back().second++;
+        int n;
+        cin >> n;
+        cin.ignore();
 
-        prev = c;
-    }
+        vector<char> v(n+1);
 
-    prev = 'A';
-    for(auto c : t){
-        if(prev != c) tt.push_back({c, 1});
-        else tt.back().second++;
+        rep(i, n){
+            string input;
+            getline(cin, input);
+            stringstream ss(input);
 
-        prev = c;
-    }
-
-    bool flag = true;
-    if(ss.size() != tt.size()){
-        flag = false;
-    }else{
-    
-        rep(i, ss.size()){
-            if(ss.at(i).first != tt.at(i).first){
-                flag = false;
-                break;
-            }
-            if(ss.at(i).second == 1 && ss.at(i).second < tt.at(i).second){
-                flag = false;
-                break;
-            }
-            
-            if(ss.at(i).second > tt.at(i).second){
-                flag = false;
-                break;
-            }
-
+            int a;
+            char b;
+            ss >> a;
+            ss >> b;
+            v.at(i+1) = b;
         }
+
+        cout << "#" + to_string(tc+1) + sp;
+        inorder(&v, 1);
+        cout << endl;
+        
     }
-
-
-    YesNo(flag);
-
-
+    
     return 0;
 }
