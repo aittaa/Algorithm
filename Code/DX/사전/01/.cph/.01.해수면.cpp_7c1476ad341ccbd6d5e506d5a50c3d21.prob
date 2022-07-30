@@ -1,1 +1,0 @@
-{"name":"Local: 01","url":"/Users/hyunkim/workspace/Algorithm/Cpp/01.해수면.cpp","tests":[{"id":1657499413907,"input":"2\n2\n1 2\n2 1\n5\n6 8 2 6 2\n3 2 3 4 6\n6 7 3 3 2\n7 2 5 3 6\n8 9 5 2 7","output":"#1 2\n#2 5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/hyunkim/workspace/Algorithm/Cpp/01.해수면.cpp","group":"local","local":true}

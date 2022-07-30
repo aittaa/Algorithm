@@ -1,1 +1,0 @@
-{"name":"Local: 11659","url":"/Users/hyunkim/workspace/Algorithm/Code/BOJ/11659.py","tests":[{"id":1658995159847,"input":"5 3\n5 4 3 2 1\n1 3\n2 4\n5 5","output":"12\n9\n1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/hyunkim/workspace/Algorithm/Code/BOJ/11659.py","group":"local","local":true}
